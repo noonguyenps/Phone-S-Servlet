@@ -69,83 +69,58 @@
     <div class="row margin-bottom-20">
       <!-- BEGIN CONTENT -->
       <div class="col-md-12 col-sm-12">
-        <h1>Thông tin người dùng</h1>
-        <a href="/profile/notification">Thông báo</a>
-        <div class="content-page">
-          <div class="content-page">
-            <div class="row">
-              <div class="col-md-6 ">
-                <!-- BEGIN SAMPLE FORM PORTLET-->
-                <div class="portlet-body form">
-                  <form method="post" action="/profile">
-                    <div class="form-body">
-                      <div class="form-group">
-                        <label class="col-md-4 control-label">Tên người dùng</label>
-                        <div class="col-md-8">
-                          <div class="input-icon right">
-                            <input disabled="disabled" type="text" class="form-control" placeholder="${user.name}" name="name">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="form-group">
-                        <label class="col-md-4 control-label">Số điện thoại</label>
-                        <div class="col-md-8">
-                          <div class="input-icon right">
-                            <input type="text" class="form-control" placeholder="${user.phone}" name="phone">
-                          </div>
-                        </div>
-                      </div>
-                      <br>
-                      <div class="form-group">
-                        <label class="col-md-4 control-label">Giới tính:</label>
-                        <div class="col-md-8">
-                          <div class="input-icon right">
-                            <input type="text" class="form-control" placeholder="${user.gender=='male'?'Nam':'Nữ'}">
-                              <div class="row">
-                                <input type="radio" id="male" name="gender" value="1">
-                                <label for="male">Nam</label>
-                                <input type="radio" id="female" name="gender" value="0">
-                                <label for="female">Nữ</label>
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-4 control-label">Email:</label>
-                        <div class="col-md-8">
-                          <div class="input-icon right">
-                            <input type="text" class="form-control" placeholder="${user.email}" name="email">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-4 control-label">Sinh nhật:</label>
-                        <div class="col-md-8">
-                          <div class="input-icon right">
-                            <input disabled="disabled" type="text" class="form-control" placeholder="${user.birthdate.getTime().toString()}">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-md-4 control-label">Thay đổi ngày sinh:</label>
-                        <div class="col-md-8">
-                          <div class="input-icon right">
-                            <input type="date" class="form-control" name="birthdate">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <br>
-                    <!-- class="form-actions fluid" -->
-                    <div >
-                      <div class="col-md-offset-4 col-md-8">
-                        <button type="submit" class="btn green">Thay đổi</button>
-                      </div>
-                    </div>
-                  </form>
-
+        <h1>Thông báo của bạn</h1>
+        <c:choose>
+        <c:when test="${ user != null && notifications != null}">
+        <table class="table table-striped table-bordered table-hover" id="datatable_orders">
+          <thead>
+          <tr role="row" class="heading">
+            <th width="5%">
+              ID
+            </th>
+            <th width="30%">
+              Tiêu đề
+            </th>
+            <th width="20%">
+              Nội dung
+            </th>
+            <th width="10%">
+              Thao tác
+            </th>
+          </tr>
+          <c:forEach items="${notifications }" var="noti">
+            <tr role="row" class="filter">
+              <td>
+                  ${noti.id }
+              </td>
+              <td>
+                  ${noti.subject }
+              </td>
+              <td>
+                  ${noti.message}
+              </td>
+              <td>
+                <a>Xóa</a>
+              </td>
+            </tr>
+          </c:forEach>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+            </div>
+            </c:when>
+            <c:otherwise>
+              <div class="row margin-bottom-20">
+                <div class="col-md-12 col-sm-12">
+                  <h4>Danh sách thông báo của bạn đang trống</h4>
+                  <h4>Bạn có 0 thông báo!</h4>
                 </div>
+              </div>
+            </c:otherwise>
+            </c:choose>
+          </div>
+        </div>
               </div>
             </div>
           </div>

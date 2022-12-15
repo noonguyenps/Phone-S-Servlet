@@ -26,6 +26,10 @@ public class Notification {
         this.user = user;
     }
 
+    public Notification() {
+
+    }
+
     public int getId() {
         return id;
     }
