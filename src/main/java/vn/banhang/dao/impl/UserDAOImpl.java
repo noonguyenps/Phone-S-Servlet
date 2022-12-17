@@ -127,61 +127,6 @@ public class UserDAOImpl implements UserDAO {
 			return list;
 		}
 	}
-	
-	public static void main(String[] args) {
-		UserDAOImpl dao = new UserDAOImpl();
-		/*System.out.println(dao.get("tuyen", "123"));*/
-		
-		/*List<User> uTest = dao.getAllUsers();
-		uTest.forEach(u -> System.out.println(u.getName()));*/
-		
-		/*Calendar birthdate = Calendar.getInstance();
-		User u1 = new User();
-		u1.setUsername("thang1");
-		u1.setPassword("123");
-		u1.setEmail("@@");
-		u1.setName("thang1");
-		u1.setBirthdate(birthdate);
-		u1.setGender("male");
-		u1.setPhone("098765");
-		u1.setIs_admin(1);
-		u1.setIs_seller(1);
-		
-		User u2 = new User();
-		u2.setUsername("thang2");
-		u2.setPassword("123");
-		u2.setEmail("@@");
-		u2.setName("thang2");
-		u2.setBirthdate(birthdate);
-		u2.setGender("male");
-		u2.setPhone("098765");
-		u2.setIs_admin(1);
-		u2.setIs_seller(1);
-		
-		User u3 = new User();
-		u3.setUsername("thang3");
-		u3.setPassword("123");
-		u3.setEmail("@@");
-		u3.setName("thang3");
-		u3.setBirthdate(birthdate);
-		u3.setGender("male");
-		u3.setPhone("098765");
-		u3.setIs_admin(1);
-		u3.setIs_seller(1);
-		
-		dao.insert(u1);
-		dao.insert(u2);
-		dao.insert(u3);
-		
-		List<User> uTest = dao.getAllUsers();
-		uTest.forEach(u -> System.out.println(u.getName()));*/
-		
-		try(Session session = HibernateUtil.getSessionFactory().openSession()){	
-			User user = session.get(User.class, 1);
-			List<Cart> list = dao.getCartByUser(user);
-			System.out.println(list.get(0).getName());
-		}
-	}
 
 	@Override
 	public List<User> existUser(String username, String phone, String email) {

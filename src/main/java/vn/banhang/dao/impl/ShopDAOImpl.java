@@ -132,29 +132,4 @@ public class ShopDAOImpl implements ShopDAO {
 		}
 	}
 	
-	public static void main(String[] args) {
-		/*try(Session session = HibernateUtil.getSessionFactory().openSession()){
-			Shop shop = session.get(Shop.class, 1);
-			List<Object[]> list = new ShopDAOImpl().top5Selling(shop);
-			for(Object[] i:list) {
-				System.out.println(i[0]);
-				System.out.println(i[1]);
-				System.out.println(i[2]);
-				System.out.println(i[3]);
-			}
-		}*/
-		ShopDAO dao = new ShopDAOImpl() ;
-		UserService userService = new UserServiceImpl();
-		System.out.println(dao.get("da huonh").getName());
-		Shop s = new Shop();
-		s.setAvatar("asdsad");
-		s.setId(14);
-		s.setLocation("234234");
-		s.setName("test 4");
-		s.setUser(userService.getByID(14));
-		dao.insert(s);
-	}
-
-	
-	
 }

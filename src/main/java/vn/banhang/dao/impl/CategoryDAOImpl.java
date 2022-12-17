@@ -91,22 +91,4 @@ public class CategoryDAOImpl implements CategoryDAO {
 			session.getTransaction().commit();
 		}
 	}
-	public static void main(String[] args) {
-		CategoryDAOImpl dao = new CategoryDAOImpl();
-		//System.out.println(dao.getCategories());
-		
-		//System.out.println(dao.get("1").getName());
-		/*Category c1 = new Category();
-		c1.setName("NewP2");
-		c1.setId(6);*/
-		//dao.delete("NewP");
-		//dao.getCategories().forEach(c -> System.out.println(c.getName()));
-		if(dao.getByID(100) == null)
-			System.out.println("null");
-		else
-			System.out.println(dao.getByID(100).getName());
-		
-	}
-
-	
 }

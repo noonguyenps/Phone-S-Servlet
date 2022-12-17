@@ -57,7 +57,7 @@
         <!-- BEGIN CART -->
         <div class="top-cart-block">
           <div class="top-cart-info">
-            <a id="cartQuantity" href="${pageContext.request.contextPath }/cart" class="top-cart-info-count">${cartQuantity } items</a>
+            <a id="cartQuantity" href="${pageContext.request.contextPath }/cart" class="top-cart-info-count">${cartQuantity } sản phẩm</a>
           </div>
           <i id="checkout" class="fa fa-shopping-cart" style="cursor: pointer;"></i>
         </div>
@@ -319,7 +319,7 @@
     function addToCart(id, price){
     	amount = document.getElementById("product-quantity").value
     	$.ajax({
-			url : "/BanHang/api/add-to-cart?id=" + id + "&price=" + price + "&amount=" + amount,
+			url : "/api/add-to-cart?id=" + id + "&price=" + price + "&amount=" + amount,
 			type : "get",
 			data : {
 				

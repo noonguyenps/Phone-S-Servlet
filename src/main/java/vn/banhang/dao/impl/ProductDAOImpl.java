@@ -395,21 +395,5 @@ public class ProductDAOImpl implements ProductDAO {
 		}
 	}
 
-	public static void main(String[] args) {
-		try(Session session = HibernateUtil.getSessionFactory().openSession()){
-			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Product> q = builder.createQuery(Product.class);
-			Root<Product> root = q.from(Product.class);
-			q.select(root);
-			Predicate p = builder.equal(root.get("status").as(Integer.class), 1);
-			q.where(p);
-			List<Product> list = session.createQuery(q).getResultList();
-			for(Product pt: list){
-				String a = String.valueOf(pt.getPrice());
-				System.out.println(String.format("%.0f",pt.getPrice()));
-			}
-		}
-	}
-
 
 }

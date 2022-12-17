@@ -99,20 +99,5 @@ public class SubCategoryDAOImpl implements SubCategoryDAO{
 			session.getTransaction().commit();
 		}
 	}
-	public static void main(String[] args) {
-		SubCategoryDAO daoSubCate = new SubCategoryDAOImpl();
-		CategoryDAO daoCate = new CategoryDAOImpl();
-		Category c1 = daoCate.getByID(1);
-		SubCategory sc1 = new SubCategory();
-		sc1.setName("Test");
-		sc1.setCategory(c1);
-		daoSubCate.insert(sc1);
-		
-		daoSubCate.getAllSubCategory().forEach(sc -> System.out.println(sc.getName()));
-		sc1.setName("Test2");
-		daoSubCate.edit(sc1);
-		daoSubCate.getAllSubCategory().forEach(sc -> System.out.println(sc.getName()));
-		
-	}
 	
 }

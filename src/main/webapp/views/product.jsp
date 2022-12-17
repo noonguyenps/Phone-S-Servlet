@@ -60,7 +60,7 @@
         <!-- BEGIN CART -->
         <div class="top-cart-block">
           <div class="top-cart-info">
-            <a id="cartQuantity" class="top-cart-info-count">${cartQuantity } items</a>
+            <a id="cartQuantity" class="top-cart-info-count">${cartQuantity } sản phẩm</a>
           </div>
             <i id="checkout" class="fa fa-shopping-cart" style="cursor: pointer;"></i>
         </div>

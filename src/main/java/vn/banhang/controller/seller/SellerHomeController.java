@@ -18,7 +18,7 @@ import vn.banhang.service.impl.CartServiceImpl;
 import vn.banhang.service.impl.ProductServiceImpl;
 import vn.banhang.service.impl.ShopServiceImpl;
 
-@WebServlet(urlPatterns = {"/seller/home"})
+@WebServlet(urlPatterns = {"/seller/home","/seller"})
 public class SellerHomeController extends HttpServlet {
 
 	private static final long serialVersionUID = -5103550605491265959L;

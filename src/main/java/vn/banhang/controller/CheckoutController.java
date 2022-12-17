@@ -2,6 +2,7 @@ package vn.banhang.controller;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import vn.banhang.Model.Cart;
+import vn.banhang.Model.Notification;
 import vn.banhang.Model.User;
 import vn.banhang.service.CartService;
+import vn.banhang.service.NotificationService;
 import vn.banhang.service.impl.CartServiceImpl;
+import vn.banhang.service.impl.NotificationServiceImpl;
 
 @WebServlet(urlPatterns= {"/checkout"})
 public class CheckoutController extends HttpServlet {
@@ -51,6 +55,7 @@ public class CheckoutController extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		Map<Integer, Cart> map = (Map<Integer, Cart>)session.getAttribute("cart");
+		User user = (User)session.getAttribute("user");
 		for(Cart item: map.values()) {
 			item.setName(name);
 			item.setPhone(phone);
@@ -58,6 +63,14 @@ public class CheckoutController extends HttpServlet {
 			item.setOrder_date(cal);
 			item.setStatus("pending");
 			cartService.update(item);
+			Notification notification = new Notification();
+			notification.setSubject("Đơn hàng");
+			notification.setMessage("Đơn hàng của bạn đang được xử lý");
+			notification.setUser(user);
+			notification.setCreateAt(new Date());
+			notification.setTypeMess(1);
+			NotificationService notificationService = new NotificationServiceImpl();
+			notificationService.add(notification);
 		}
 		session.setAttribute("cart", null);
 		session.setAttribute("cartQuantity", 0);

@@ -13,4 +13,11 @@ public class NotificationServiceImpl implements NotificationService {
         NotificationDAO notificationDAO = new NotificationDAOImpl();
         return notificationDAO.getListNotificationByUserID(userId);
     }
+
+    @Override
+    public void add(Notification notification) {
+        NotificationDAO notificationDAO = new NotificationDAOImpl();
+        notificationDAO.add(notification);
+
+    }
 }
